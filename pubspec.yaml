@@ -1,5 +1,5 @@
-name: flutter_riverpod_boilerplate
-description: "A new Flutter project."
+name: box_app
+description: "A simple inventory management app"
 
 publish_to: 'none'
 version: 0.1.0

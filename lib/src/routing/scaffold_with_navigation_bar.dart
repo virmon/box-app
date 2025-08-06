@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod_boilerplate/src/routing/app_navigation_bar.dart';
+import 'package:box_app/src/routing/app_navigation_bar.dart';
 
 class ScaffoldWithNavigationBar extends StatelessWidget {
   const ScaffoldWithNavigationBar({
@@ -19,23 +19,19 @@ class ScaffoldWithNavigationBar extends StatelessWidget {
       body: body,
       bottomNavigationBar: NavigationBar(
         selectedIndex: selectedIndex,
-        labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
+        labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
         destinations: const [
           NavigationDestination(
-            label: NavigationLabel.home,
-            icon: Icon(Icons.home, color: Colors.white70),
+            label: NavigationLabel.list,
+            icon: Icon(Icons.list, color: Colors.white70),
           ),
           NavigationDestination(
-            label: NavigationLabel.profile,
-            icon: Icon(Icons.person, color: Colors.white70),
+            label: NavigationLabel.search,
+            icon: Icon(Icons.search, color: Colors.white70),
           ),
           NavigationDestination(
-            label: NavigationLabel.calendar,
-            icon: Icon(Icons.calendar_month, color: Colors.white70),
-          ),
-          NavigationDestination(
-            label: NavigationLabel.dataTable,
-            icon: Icon(Icons.storage, color: Colors.white70),
+            label: NavigationLabel.add,
+            icon: Icon(Icons.add, color: Colors.white70),
           ),
         ],
         onDestinationSelected: onDestinationSelected,

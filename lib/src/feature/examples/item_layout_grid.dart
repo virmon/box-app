@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
-import 'package:flutter_riverpod_boilerplate/src/feature/examples/schedule_list.dart';
+import 'package:box_app/src/feature/examples/schedule_list.dart';
 
 class ItemLayoutGrid extends StatelessWidget {
   final int crossAxisCount;

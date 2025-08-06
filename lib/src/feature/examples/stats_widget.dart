@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod_boilerplate/src/constants/app_colors.dart';
-import 'package:flutter_riverpod_boilerplate/src/feature/examples/item_layout_grid.dart';
+import 'package:box_app/src/constants/app_colors.dart';
+import 'package:box_app/src/feature/examples/item_layout_grid.dart';
 
 class StatsWidget extends StatelessWidget {
   const StatsWidget({super.key});

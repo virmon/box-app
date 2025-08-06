@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod_boilerplate/src/feature/examples/item_layout_grid.dart';
-import 'package:flutter_riverpod_boilerplate/src/feature/examples/recent_activity_widget.dart';
-import 'package:flutter_riverpod_boilerplate/src/feature/examples/schedule_list.dart';
-import 'package:flutter_riverpod_boilerplate/src/feature/examples/stats_widget.dart';
+import 'package:box_app/src/feature/examples/item_layout_grid.dart';
+import 'package:box_app/src/feature/examples/recent_activity_widget.dart';
+import 'package:box_app/src/feature/examples/schedule_list.dart';
+import 'package:box_app/src/feature/examples/stats_widget.dart';
 
 const cellRed = Color(0xffc73232);
 const cellMustard = Color(0xffd7aa22);

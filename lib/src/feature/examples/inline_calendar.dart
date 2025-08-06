@@ -1,6 +1,6 @@
 import 'package:easy_date_timeline/easy_date_timeline.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod_boilerplate/src/common/booking_card_widget.dart';
+import 'package:box_app/src/common/booking_card_widget.dart';
 
 class InlineCalendar extends StatefulWidget {
   const InlineCalendar({super.key});

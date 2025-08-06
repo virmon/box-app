@@ -1,29 +1,24 @@
+import 'package:box_app/src/feature/products/presentation/add_product_form.dart';
+import 'package:box_app/src/feature/products/presentation/products_screen.dart';
+import 'package:box_app/src/feature/products/presentation/search_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_riverpod_boilerplate/src/feature/authentication/auth_gate.dart';
-import 'package:flutter_riverpod_boilerplate/src/feature/examples/inline_calendar.dart';
-import 'package:flutter_riverpod_boilerplate/src/feature/examples/calendar_root.dart';
-import 'package:flutter_riverpod_boilerplate/src/feature/home/data_table.dart';
-import 'package:flutter_riverpod_boilerplate/src/feature/home/grid.dart';
-import 'package:flutter_riverpod_boilerplate/src/routing/app_navigation_bar.dart';
-import 'package:flutter_riverpod_boilerplate/src/feature/home/home.dart';
+import 'package:box_app/src/feature/authentication/auth_gate.dart';
+import 'package:box_app/src/routing/app_navigation_bar.dart';
 import 'package:go_router/go_router.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
-final _shellNavigatorHomeKey = GlobalKey<NavigatorState>(
-  debugLabel: 'shellHome',
+final _shellNavigatorProductsKey = GlobalKey<NavigatorState>(
+  debugLabel: 'shellProducts',
 );
-final _shellNavigatorProfileKey = GlobalKey<NavigatorState>(
-  debugLabel: 'shellProfile',
+final _shellNavigatorSearchKey = GlobalKey<NavigatorState>(
+  debugLabel: 'shellSearch',
 );
-final _shellNavigatorCalendarKey = GlobalKey<NavigatorState>(
-  debugLabel: 'shellCalendar',
-);
-final _shellNavigatorDataTableKey = GlobalKey<NavigatorState>(
-  debugLabel: 'shellDataTable',
+final _shellNavigatorAddProductKey = GlobalKey<NavigatorState>(
+  debugLabel: 'shellAddProduct',
 );
 
-enum AppRoute { signIn, home, profile, dataTable, calendar, calendarDetail }
+enum AppRoute { signIn, products, search, addProducts }
 
 final goRouterProvider = Provider((ref) {
   return GoRouter(
@@ -48,54 +43,35 @@ final goRouterProvider = Provider((ref) {
         ),
         branches: [
           StatefulShellBranch(
-            navigatorKey: _shellNavigatorHomeKey,
+            navigatorKey: _shellNavigatorProductsKey,
             routes: [
               GoRoute(
                 path: '/',
-                name: AppRoute.home.name,
+                name: AppRoute.products.name,
                 pageBuilder: (context, state) =>
-                    const NoTransitionPage(child: Home()),
+                    const NoTransitionPage(child: ProductsScreen()),
               ),
             ],
           ),
           StatefulShellBranch(
-            navigatorKey: _shellNavigatorProfileKey,
+            navigatorKey: _shellNavigatorSearchKey,
             routes: [
               GoRoute(
-                path: '/profile',
-                name: AppRoute.profile.name,
+                path: '/search',
+                name: AppRoute.search.name,
                 pageBuilder: (context, state) =>
-                    const NoTransitionPage(child: GridWidget()),
+                    const NoTransitionPage(child: SearchScreen()),
               ),
             ],
           ),
           StatefulShellBranch(
-            navigatorKey: _shellNavigatorCalendarKey,
+            navigatorKey: _shellNavigatorAddProductKey,
             routes: [
               GoRoute(
-                path: '/calendar',
-                name: AppRoute.calendar.name,
+                path: '/add',
+                name: AppRoute.addProducts.name,
                 pageBuilder: (context, state) =>
-                    const NoTransitionPage(child: CalendarRoot()),
-                routes: [
-                  GoRoute(
-                    path: '/calendarDetail',
-                    name: AppRoute.calendarDetail.name,
-                    pageBuilder: (context, state) =>
-                        const NoTransitionPage(child: InlineCalendar()),
-                  ),
-                ],
-              ),
-            ],
-          ),
-          StatefulShellBranch(
-            navigatorKey: _shellNavigatorDataTableKey,
-            routes: [
-              GoRoute(
-                path: '/dataTable',
-                name: AppRoute.dataTable.name,
-                pageBuilder: (context, state) =>
-                    const NoTransitionPage(child: MyDataTable()),
+                    const NoTransitionPage(child: AddProductForm()),
               ),
             ],
           ),

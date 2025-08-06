@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod_boilerplate/src/routing/scaffold_with_navigation_bar.dart';
-import 'package:flutter_riverpod_boilerplate/src/routing/scaffold_with_navigation_rail.dart';
+import 'package:box_app/src/routing/scaffold_with_navigation_bar.dart';
+import 'package:box_app/src/routing/scaffold_with_navigation_rail.dart';
 import 'package:go_router/go_router.dart';
 
 class NavigationLabel {
-  static const home = 'Home';
-  static const profile = 'Profile';
-  static const dataTable = 'Data Table';
-  static const calendar = 'Calendar';
+  static const list = 'Products';
+  static const search = 'Search';
+  static const add = 'Add product';
 }
 
 class AppNavigationBar extends StatelessWidget {

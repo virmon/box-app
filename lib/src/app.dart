@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_riverpod_boilerplate/src/constants/app_colors.dart';
-import 'package:flutter_riverpod_boilerplate/src/routing/app_router.dart';
+import 'package:box_app/src/constants/app_colors.dart';
+import 'package:box_app/src/routing/app_router.dart';
 
 class App extends ConsumerWidget {
   const App({super.key});
@@ -13,25 +13,25 @@ class App extends ConsumerWidget {
       routerConfig: goRouter,
       title: 'Flutter App',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: AppColors.violetC2),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
         appBarTheme: const AppBarTheme(
-          backgroundColor: AppColors.violetC2,
+          backgroundColor: Colors.black,
           foregroundColor: AppColors.whiteSmoke,
         ),
         navigationBarTheme: NavigationBarThemeData(
-          backgroundColor: AppColors.violetC2,
-          indicatorColor: Colors.white10,
+          backgroundColor: Colors.black,
+          indicatorColor: Colors.white12,
           labelTextStyle: WidgetStateProperty.resolveWith((states) {
             if (states.contains(WidgetState.selected)) {
-              return const TextStyle(color: AppColors.violet99);
+              return const TextStyle(color: AppColors.white);
             }
             return const TextStyle(color: AppColors.grey, fontSize: 12);
           }),
         ),
         navigationRailTheme: NavigationRailThemeData(
-          backgroundColor: AppColors.violetC2,
-          indicatorColor: Colors.white10,
-          unselectedLabelTextStyle: TextStyle(color: AppColors.black),
+          backgroundColor: Colors.black,
+          indicatorColor: Colors.white12,
+          unselectedLabelTextStyle: TextStyle(color: AppColors.white),
           selectedLabelTextStyle: TextStyle(color: AppColors.white),
         ),
       ),

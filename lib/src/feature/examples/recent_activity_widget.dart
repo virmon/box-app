@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod_boilerplate/src/constants/app_colors.dart';
+import 'package:box_app/src/constants/app_colors.dart';
 
 class RecentActivityWidget extends StatelessWidget {
   const RecentActivityWidget({super.key});

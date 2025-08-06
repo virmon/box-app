@@ -4,20 +4,16 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:box_app/src/constants/app_colors.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
-final _createClassKey = GlobalKey<FormBuilderState>();
-List<String> classOptions = ['Individual', 'Group'];
-List<String> categoryOptions = ['Seminar', 'Workshop'];
-List<String> durationOptions = ['55 minutes', '1 hour', '2 hours'];
-List<String> repeatOptions = ['None', 'Everyday'];
-List<String> locationOptions = ['Studio A', 'Studio B'];
+final _addProductKey = GlobalKey<FormBuilderState>();
+List<String> categoryOptions = ['Category1', 'Category2'];
 
-class Home extends StatelessWidget {
-  const Home({super.key});
+class AddProductForm extends StatelessWidget {
+  const AddProductForm({super.key});
 
   final double _minWidth = 400.0;
   final double _spacing = 120.0;
   final double _runSpacing = 10.0;
-  final String formTitle = 'Create New Schedule';
+  final String formTitle = 'Add Product';
 
   void cancelForm() {
     debugPrint('Form cancelled');
@@ -25,12 +21,12 @@ class Home extends StatelessWidget {
 
   void submitForm() {
     debugPrint('Form submit');
-    _createClassKey.currentState?.saveAndValidate();
-    debugPrint(_createClassKey.currentState?.value.toString());
+    _addProductKey.currentState?.saveAndValidate();
+    debugPrint(_addProductKey.currentState?.value.toString());
 
     // can access all field values without saving form with instantValues
-    _createClassKey.currentState?.validate();
-    debugPrint(_createClassKey.currentState?.instantValue.toString());
+    _addProductKey.currentState?.validate();
+    debugPrint(_addProductKey.currentState?.instantValue.toString());
   }
 
   @override
@@ -61,7 +57,7 @@ class Home extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: FormBuilder(
-                  key: _createClassKey,
+                  key: _addProductKey,
                   child: Column(
                     children: [
                       Padding(
@@ -83,9 +79,9 @@ class Home extends StatelessWidget {
                             SizedBox(
                               width: _minWidth,
                               child: FormBuilderTextField(
-                                name: 'Title',
+                                name: 'Product name',
                                 decoration: const InputDecoration(
-                                  labelText: 'Title',
+                                  labelText: 'Product name',
                                   border: OutlineInputBorder(),
                                 ),
                                 validator: FormBuilderValidators.compose([
@@ -95,22 +91,41 @@ class Home extends StatelessWidget {
                             ),
                             SizedBox(
                               width: _minWidth,
-                              child: FormBuilderDropdown<String>(
-                                name: 'Class Type',
-                                initialValue: 'Individual',
-                                decoration: InputDecoration(
-                                  labelText: 'Class Type',
-                                  hintText: 'Class Type',
+                              child: FormBuilderTextField(
+                                name: 'Brand',
+                                decoration: const InputDecoration(
+                                  labelText: 'Brand',
                                   border: OutlineInputBorder(),
                                 ),
-                                items: classOptions
-                                    .map(
-                                      (option) => DropdownMenuItem(
-                                        value: option,
-                                        child: Text(option),
-                                      ),
-                                    )
-                                    .toList(),
+                                validator: FormBuilderValidators.compose([
+                                  FormBuilderValidators.required(),
+                                ]),
+                              ),
+                            ),
+                            SizedBox(
+                              width: _minWidth,
+                              child: FormBuilderTextField(
+                                name: 'Model',
+                                decoration: const InputDecoration(
+                                  labelText: 'Model',
+                                  border: OutlineInputBorder(),
+                                ),
+                                validator: FormBuilderValidators.compose([
+                                  FormBuilderValidators.required(),
+                                ]),
+                              ),
+                            ),
+                            SizedBox(
+                              width: _minWidth,
+                              child: FormBuilderTextField(
+                                name: 'Price',
+                                decoration: const InputDecoration(
+                                  labelText: 'Price',
+                                  border: OutlineInputBorder(),
+                                ),
+                                validator: FormBuilderValidators.compose([
+                                  FormBuilderValidators.required(),
+                                ]),
                               ),
                             ),
                             SizedBox(
@@ -134,114 +149,13 @@ class Home extends StatelessWidget {
                               width: _minWidth,
                               child: FormBuilderDropdown<String>(
                                 name: 'Category',
-                                initialValue: 'Workshop',
+                                initialValue: 'Category1',
                                 decoration: InputDecoration(
                                   labelText: 'Category',
                                   hintText: 'Category',
                                   border: OutlineInputBorder(),
                                 ),
                                 items: categoryOptions
-                                    .map(
-                                      (option) => DropdownMenuItem(
-                                        value: option,
-                                        child: Text(option),
-                                      ),
-                                    )
-                                    .toList(),
-                              ),
-                            ),
-                            SizedBox(
-                              width: _minWidth,
-                              child: FormBuilderTextField(
-                                name: 'Tags',
-                                decoration: const InputDecoration(
-                                  labelText: 'Tags',
-                                  border: OutlineInputBorder(),
-                                ),
-                                validator: FormBuilderValidators.compose([
-                                  FormBuilderValidators.required(),
-                                ]),
-                              ),
-                            ),
-                            SizedBox(
-                              width: _minWidth,
-                              child: FormBuilderDateRangePicker(
-                                firstDate: DateTime(2000),
-                                lastDate: DateTime(2110),
-                                name: 'Date',
-                                decoration: const InputDecoration(
-                                  labelText: 'Date',
-                                  border: OutlineInputBorder(),
-                                ),
-                                validator: FormBuilderValidators.compose([
-                                  FormBuilderValidators.required(),
-                                ]),
-                              ),
-                            ),
-                            SizedBox(
-                              width: _minWidth,
-                              child: FormBuilderDateTimePicker(
-                                name: 'Time',
-                                decoration: const InputDecoration(
-                                  labelText: 'Time',
-                                  border: OutlineInputBorder(),
-                                ),
-                                validator: FormBuilderValidators.compose([
-                                  FormBuilderValidators.required(),
-                                ]),
-                              ),
-                            ),
-                            SizedBox(
-                              width: _minWidth,
-                              child: FormBuilderDropdown<String>(
-                                name: 'Duration',
-                                initialValue: '55 minutes',
-                                decoration: InputDecoration(
-                                  labelText: 'Duration',
-                                  hintText: 'Duration',
-                                  border: OutlineInputBorder(),
-                                ),
-                                items: durationOptions
-                                    .map(
-                                      (option) => DropdownMenuItem(
-                                        value: option,
-                                        child: Text(option),
-                                      ),
-                                    )
-                                    .toList(),
-                              ),
-                            ),
-                            SizedBox(
-                              width: _minWidth,
-                              child: FormBuilderDropdown<String>(
-                                name: 'Repeat',
-                                initialValue: 'None',
-                                decoration: InputDecoration(
-                                  labelText: 'Repeat',
-                                  hintText: 'Repeat',
-                                  border: OutlineInputBorder(),
-                                ),
-                                items: repeatOptions
-                                    .map(
-                                      (option) => DropdownMenuItem(
-                                        value: option,
-                                        child: Text(option),
-                                      ),
-                                    )
-                                    .toList(),
-                              ),
-                            ),
-                            SizedBox(
-                              width: _minWidth,
-                              child: FormBuilderDropdown<String>(
-                                name: 'Location',
-                                initialValue: 'Studio A',
-                                decoration: InputDecoration(
-                                  labelText: 'Location',
-                                  hintText: 'Location',
-                                  border: OutlineInputBorder(),
-                                ),
-                                items: locationOptions
                                     .map(
                                       (option) => DropdownMenuItem(
                                         value: option,
@@ -258,10 +172,10 @@ class Home extends StatelessWidget {
                                 inputFormatters: [
                                   FilteringTextInputFormatter.digitsOnly,
                                 ],
-                                name: 'Max Attendees',
+                                name: 'Stock Quantitiy',
                                 keyboardType: TextInputType.numberWithOptions(),
                                 decoration: const InputDecoration(
-                                  labelText: 'Max Attendees',
+                                  labelText: 'Stock Quantity',
                                   border: OutlineInputBorder(),
                                 ),
                                 validator: FormBuilderValidators.compose([
@@ -288,10 +202,10 @@ class Home extends StatelessWidget {
                                   minimumSize: Size(_minWidth, 60),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(5.0),
-                                    side: BorderSide(color: AppColors.violetE3),
+                                    // side: BorderSide(color: Colors.grey),
                                   ),
-                                  backgroundColor: AppColors.whiteSmoke,
-                                  foregroundColor: AppColors.violetE3,
+                                  // backgroundColor: Colors.white70,
+                                  foregroundColor: Colors.black45,
                                 ),
                                 onPressed: () => cancelForm(),
                                 child: Text('Cancel'),
@@ -305,11 +219,11 @@ class Home extends StatelessWidget {
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(5.0),
                                   ),
-                                  backgroundColor: AppColors.violetE3,
+                                  backgroundColor: Colors.green,
                                   foregroundColor: AppColors.white,
                                 ),
                                 onPressed: () => submitForm(),
-                                child: Text('Create Schedule'),
+                                child: Text('Save'),
                               ),
                             ),
                           ],

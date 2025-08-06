@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod_boilerplate/src/routing/app_navigation_bar.dart';
+import 'package:box_app/src/routing/app_navigation_bar.dart';
 
 class ScaffoldWithNavigationRail extends StatefulWidget {
   const ScaffoldWithNavigationRail({
@@ -44,26 +44,24 @@ class _ScaffoldWithNavigationRailState
                 });
               },
               icon: Icon(
-                isExtended ? Icons.menu_open_rounded : Icons.menu,
+                isExtended
+                    ? Icons.arrow_circle_left_rounded
+                    : Icons.arrow_circle_right_rounded,
                 color: Colors.white70,
               ),
             ),
             destinations: const <NavigationRailDestination>[
               NavigationRailDestination(
-                label: Text(NavigationLabel.home),
-                icon: Icon(Icons.home, color: Colors.white70),
+                label: Text(NavigationLabel.list),
+                icon: Icon(Icons.list, color: Colors.white70),
               ),
               NavigationRailDestination(
-                label: Text(NavigationLabel.profile),
-                icon: Icon(Icons.person, color: Colors.white70),
+                label: Text(NavigationLabel.search),
+                icon: Icon(Icons.search, color: Colors.white70),
               ),
               NavigationRailDestination(
-                label: Text(NavigationLabel.calendar),
-                icon: Icon(Icons.calendar_month, color: Colors.white70),
-              ),
-              NavigationRailDestination(
-                label: Text(NavigationLabel.dataTable),
-                icon: Icon(Icons.storage, color: Colors.white70),
+                label: Text(NavigationLabel.add),
+                icon: Icon(Icons.add, color: Colors.white70),
               ),
             ],
           ),
